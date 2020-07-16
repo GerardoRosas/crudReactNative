@@ -1,0 +1,25 @@
+{
+  "clientes": [
+    {
+      "nombre": "Gerardo",
+      "telefono": "55231231",
+      "empresa": "FreezeByte",
+      "correo": "Correo@corre.com",
+      "id": 1
+    },
+    {
+      "nombre": "Fernanda",
+      "telefono": "231231231",
+      "empresa": "L’Oreal",
+      "correo": "Mail@mail.com",
+      "id": 2
+    },
+    {
+      "nombre": "Santiago",
+      "telefono": "1231231231",
+      "empresa": "Mamá y Papa",
+      "correo": "Correo@santi.com",
+      "id": 3
+    }
+  ]
+}
