@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, FlatList, View, StyleSheet } from 'react-native';
+import { Text, FlatList, View } from 'react-native';
 import { List, Headline, Button, FAB } from 'react-native-paper'
 import axios from 'axios';
 import globalStyles from '../styles/global';
@@ -43,14 +43,16 @@ const Inicio = ({navigation}) => {
                     <List.Item
                         title={item.nombre}
                         description={item.empresa}
-                        onPress={() => navigation.navigate('DetallesCliente', {item})}
+                        //Al dar click se pasan los datos como segundo argumento de la funcion
+                        onPress={() => navigation.navigate('DetallesCliente', {item, guardarConsultarAPI})}
                     />
                 )}
             />
 
             <FAB 
                 icon='plus'
-                style={styles.fab}
+                style={globalStyles.fab}
+                //Se le pasa el objeto completo de cada usuario a la vista
                 onPress={() => navigation.navigate('NuevoCliente', {guardarConsultarAPI})}
                 color="black"
             />
@@ -58,13 +60,4 @@ const Inicio = ({navigation}) => {
     );
 }
 
-const styles = StyleSheet.create({
-    fab: {
-        position: 'absolute',
-        margin: 20,
-        right: 0,
-        bottom: 18
-    }
-})
- 
 export default Inicio;

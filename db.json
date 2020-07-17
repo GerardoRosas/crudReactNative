@@ -1,24 +1,17 @@
 {
   "clientes": [
     {
-      "nombre": "Gerardo",
-      "telefono": "55231231",
-      "empresa": "FreezeByte",
-      "correo": "Correo@corre.com",
-      "id": 1
-    },
-    {
-      "nombre": "Fernanda",
-      "telefono": "231231231",
-      "empresa": "L’Oreal",
-      "correo": "Mail@mail.com",
+      "nombre": "Santiago Rosas",
+      "telefono": "346546345",
+      "empresa": "KidsCrazy",
+      "correo": "Mail@mail,com",
       "id": 2
     },
     {
-      "nombre": "Santiago",
-      "telefono": "1231231231",
-      "empresa": "Mamá y Papa",
-      "correo": "Correo@santi.com",
+      "nombre": "Fernanda",
+      "telefono": "865785678",
+      "empresa": "L’Oreal",
+      "correo": "Fer1234@eqs.com",
       "id": 3
     }
   ]

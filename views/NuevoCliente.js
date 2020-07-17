@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, StyleSheet} from 'react-native';
 import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from'react-native-paper';
 import globalStyles from '../styles/global';
@@ -15,6 +15,20 @@ const NuevoCliente = ({navigation, route}) => {
     const [empresa, guardarEmpresa ] = useState('');
     const [ alerta, guardarAlerta ] = useState(false);
 
+    //Detectar si estamos editando o no
+    useEffect(() => {
+        if(route.params.cliente){
+            const { nombre, telefono, correo, empresa } = route.params.cliente;
+
+            //Auto-rellenar el formulario para poder editar
+            guardarNombre(nombre);
+            guardarTelefono(telefono);
+            guardarEmpresa(empresa);
+            guardarCorreo(correo);
+        }
+    }, [])
+
+
     //Funcion del boton
     const guardarCliente = async () => {
         //Validar
@@ -25,13 +39,26 @@ const NuevoCliente = ({navigation, route}) => {
 
         //Generar cliente
         const cliente = {nombre, telefono, empresa, correo};
-        console.log(cliente);
+        //console.log(cliente);
 
-        //Guardar el cliente en la API
-        try {
-            await axios.post('http://localhost:3000/clientes', cliente)
-        } catch (error) {
-            console.log(error)
+        //Si estamos editando o creando un nuevo cliente
+        if(route.params.cliente){
+            const { id } = route.params.cliente;
+            cliente.id = id;
+            const url = `http://localhost:3000/clientes/${id}`;
+
+            try {
+                await axios.put(url, cliente);
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            //Guardar el cliente en la API
+            try {
+                await axios.post('http://localhost:3000/clientes', cliente)
+            } catch (error) {
+                console.log(error)
+            }
         }
 
         //Redireccionar
